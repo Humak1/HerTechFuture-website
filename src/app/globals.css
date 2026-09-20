@@ -41,3 +41,12 @@
 
   --ease-brand: cubic-bezier(.22, .61, .36, 1);
 }
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+  }
+}
