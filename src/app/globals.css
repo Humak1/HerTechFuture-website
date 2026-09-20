@@ -118,3 +118,11 @@
   text-transform: uppercase;
   color: var(--color-fg-muted);
 }
+
+html.motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .9s var(--ease-brand), transform .9s var(--ease-brand);
+  transition-delay: var(--d, 0ms);
+}
+html.motion [data-reveal].in { opacity: 1; transform: none; }
