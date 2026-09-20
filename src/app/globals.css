@@ -218,3 +218,7 @@ html.motion .hero-wash {
   animation: lift 1.1s var(--ease-brand) .95s forwards;
 }
 @keyframes lift { to { opacity: 0; } }
+
+html.motion .hero-lede    { opacity: 0; animation: rise 1.2s var(--ease-brand) 2.85s forwards; }
+html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3.15s forwards; }
+@keyframes rise { from { transform: translateY(26px); } to { opacity: 1; transform: none; } }
