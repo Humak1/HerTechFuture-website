@@ -291,3 +291,9 @@ html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3
 @keyframes drift { to { transform: translateX(calc(-50% - 8px)); } }
 .marquee:hover .marquee-track,
 .marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; }
+  .marquee-track > * { scroll-snap-align: center; }
+}
