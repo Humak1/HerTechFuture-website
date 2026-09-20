@@ -4,6 +4,7 @@ import { Jost, Prata } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
+import { MotionRuntime } from "@/components/motion/motion-runtime";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
@@ -67,6 +68,9 @@ export default function RootLayout({
         </main>
 
         <SiteFooter />
+
+        {/* Mounted last: it reads the DOM the rest of the page produced. */}
+        <MotionRuntime />
       </body>
     </html>
   );
