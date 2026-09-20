@@ -118,6 +118,23 @@ export function MotionRuntime() {
         node.parentNode?.replaceChild(frag, node);
       }
     }
+
+    /* ---- buttons lean toward the pointer ---------------------------- */
+    const buttons = Array.from(document.querySelectorAll<HTMLElement>("[data-magnetic]"));
+    const onMove = (event: PointerEvent) => {
+      const btn = event.currentTarget as HTMLElement;
+      const rect = btn.getBoundingClientRect();
+      const x = (event.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (event.clientY - rect.top - rect.height / 2) / rect.height;
+      btn.style.transform = `translate(${x * 7}px, ${y * 5}px)`;
+    };
+    const onLeave = (event: PointerEvent) => {
+      (event.currentTarget as HTMLElement).style.transform = "";
+    };
+    buttons.forEach((btn) => {
+      btn.addEventListener("pointermove", onMove);
+      btn.addEventListener("pointerleave", onLeave);
+    });
   }, []);
 
   return null;
