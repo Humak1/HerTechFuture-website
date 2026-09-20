@@ -1,21 +1,33 @@
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+/**
+ * ESLint flat config.
+ *
+ * `eslint-config-next` ships native flat configs, so they are imported and
+ * spread directly. An earlier version of this file routed them through
+ * `@eslint/eslintrc`'s FlatCompat layer, which crashed with "Converting
+ * circular structure to JSON" -- the compatibility shim cannot serialise the
+ * modern config's plugin graph. If you see that error anywhere, it is almost
+ * always a flat config being pushed through the legacy adapter.
+ *
+ * - core-web-vitals: Next.js, React and React Hooks rules, with the ones that
+ *   affect Core Web Vitals raised from warnings to errors.
+ * - typescript: typescript-eslint's recommended rules on top.
+ */
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
 
-// `FlatCompat` lets us use Next's shareable config (written in the older
-// "extends" format) from a modern flat config file.
-const compat = new FlatCompat({ baseDirectory: __dirname });
-
-const eslintConfig = [
-  // `core-web-vitals` adds accessibility and performance rules on top of the
-  // base Next rules -- e.g. it will warn if an <img> is missing alt text.
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    ignores: [".next/**", "node_modules/**", "out/**"],
-  },
-];
+  // Build output and generated files -- nothing here is ours to lint.
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "node_modules/**",
+  ]),
+]);
 
 export default eslintConfig;
