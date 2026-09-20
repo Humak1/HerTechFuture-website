@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+
+/*
+ * DESIGN TOKENS — HerTech Future
+ * -----------------------------
+ * Sampled from the society's brand banner, then measured rather than
+ * eyeballed:
+ *
+ *   plum   #6F3049 on cream  8.84:1  passes AA and AAA
+ *   mid    #8E4F68 on cream  5.59:1  passes AA
+ *   blush  #EAC7C7 on cream  1.44:1  FAILS — decorative only, never text
+ *
+ * That last line governs the whole palette: blush is for line art, fills
+ * and ornament. Plum does the talking.
+ *
+ * The token NAMES are unchanged from the previous dark theme on purpose.
+ * Every component already styles through them, so swapping these values
+ * re-skins the entire site without touching a single component.
+ */
 @theme {
   --color-ink: #FAF5F1;        /* page ground — warm cream */
   --color-surface: #FFFCFA;    /* raised panels */
