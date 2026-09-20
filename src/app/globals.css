@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 /*
  * DESIGN TOKENS — HerTech Future
  * -----------------------------
@@ -19,31 +18,33 @@
  * re-skins the entire site without touching a single component.
  */
 @theme {
-  --color-ink: #FAF5F1;        /* page ground — warm cream */
-  --color-surface: #FFFCFA;    /* raised panels */
-  --color-surface-2: #FFFFFF;  /* hover state */
+  --color-ink: #faf5f1; /* page ground — warm cream */
+  --color-surface: #fffcfa; /* raised panels */
+  --color-surface-2: #ffffff; /* hover state */
 
-  --color-border: #E6D3CE;     /* hairlines */
+  --color-border: #e6d3ce; /* hairlines */
 
-  --color-accent: #6F3049;     /* plum — headings, buttons, links */
-  --color-accent-strong: #8E4F68;
-  --color-accent-ink: #FAF5F1; /* text sitting ON plum */
+  --color-accent: #6f3049; /* plum — headings, buttons, links */
+  --color-accent-strong: #8e4f68;
+  --color-accent-ink: #faf5f1; /* text sitting ON plum */
 
-  --color-blush: #EAC7C7;      /* decorative only */
-  --color-blush-soft: #F7E8E7; /* soft panel fill */
+  --color-blush: #eac7c7; /* decorative only */
+  --color-blush-soft: #f7e8e7; /* soft panel fill */
 
-  --color-fg: #2E1A22;         /* body copy */
-  --color-fg-muted: #8E4F68;
-  --color-fg-subtle: #A67888;
+  --color-fg: #2e1a22; /* body copy */
+  --color-fg-muted: #8e4f68;
+  --color-fg-subtle: #a67888;
 
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-prata), ui-serif, Georgia, serif;
 
-  --ease-brand: cubic-bezier(.22, .61, .36, 1);
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background-color: var(--color-ink);
@@ -56,16 +57,24 @@
     -webkit-text-size-adjust: 100%;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-display);
     font-weight: 400;
     color: var(--color-accent);
     line-height: 1.08;
-    letter-spacing: -.01em;
+    letter-spacing: -0.01em;
   }
 
-  h1, h2, h3 { text-wrap: balance; }
-  p { text-wrap: pretty; }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
 
   /* Never delete a focus outline without replacing it. This is how a
      keyboard user knows where they are on the page. */
@@ -78,11 +87,15 @@
   /* Anyone who has asked their operating system to reduce motion gets the
      page still and complete. A WCAG 2.2 requirement, not a courtesy. */
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      animation-duration: .01ms !important;
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: .01ms !important;
+      transition-duration: 0.01ms !important;
     }
   }
 
@@ -94,27 +107,16 @@
     inset: 0;
     z-index: 999;
     pointer-events: none;
-    opacity: .38;
+    opacity: 0.38;
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-  }
-
-  /* Shifting it in four steps makes it flicker like projected film
-     rather than sitting still. */
-  body::before { animation: grain 900ms steps(4) infinite; }
-  @keyframes grain {
-    0%   { background-position: 0 0; }
-    25%  { background-position: -30px 14px; }
-    50%  { background-position: 18px -26px; }
-    75%  { background-position: -14px -8px; }
-    100% { background-position: 0 0; }
   }
 }
 
 .eyebrow {
-  font-size: .72rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: .34em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--color-fg-muted);
 }
@@ -122,10 +124,15 @@
 html.motion [data-reveal] {
   opacity: 0;
   transform: translateY(22px);
-  transition: opacity .9s var(--ease-brand), transform .9s var(--ease-brand);
+  transition:
+    opacity 0.9s var(--ease-brand),
+    transform 0.9s var(--ease-brand);
   transition-delay: var(--d, 0ms);
 }
-html.motion [data-reveal].in { opacity: 1; transform: none; }
+html.motion [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
 
 /* --- hero choreography ------------------------------------------------ */
 
@@ -137,9 +144,17 @@ html.motion .mark {
   animation: ink 2.1s var(--ease-brand) 1.1s forwards;
 }
 @keyframes ink {
-  0%   { opacity: 0; clip-path: inset(0 0 100% 0); }
-  18%  { opacity: 1; }
-  100% { opacity: 1; clip-path: inset(0 0 0 0); }
+  0% {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 /* Words are wrapped by the runtime, so the headline is a plain readable
@@ -155,40 +170,67 @@ html.motion .hero-title .wd {
   animation-delay: calc(var(--i) * 215ms + 180ms);
 }
 @keyframes punch {
-  0%   { opacity: 0; transform: scale(.55) translateY(.16em); }
-  45%  { opacity: 1; transform: scale(1.07) translateY(-.02em); }
-  72%  { transform: scale(.985); }
-  100% { opacity: 1; transform: none; }
+  /* Scaling live text makes it shimmer: the glyph edges land between
+   physical pixels on every frame and the renderer keeps re-hinting them.
+   Moving the word instead of resizing it keeps every letter crisp, and
+   the overshoot still reads as a pop. */
+  0% {
+    opacity: 0;
+    transform: translateY(0.55em);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-0.09em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* The underline is drawn by a nib travelling along its leading edge. Both
    run the same duration on a LINEAR curve — any easing on either and the
    pen drifts ahead of or behind the ink, which instantly looks wrong. */
-.hero-underline {
+.hero-title em {
+  position: relative;
+  display: inline-block;
+}
+.hero-title em::after {
+  content: "";
   position: absolute;
-  left: -.04em; right: -.04em;
-  bottom: -.05em;
-  height: .075em;
+  left: 0;
+  right: 0;
+  bottom: -0.02em;
+  height: 0.08em;
   background: var(--color-blush);
   border-radius: 999px;
   transform-origin: left center;
 }
-html.motion .hero-underline {
+html.motion .hero-title em::after {
   transform: scaleX(0);
   animation: draw-line 1.4s linear 2.75s forwards;
 }
-@keyframes draw-line { to { transform: scaleX(1); } }
+
+@keyframes draw-line {
+  to {
+    transform: scaleX(1);
+  }
+}
 
 .hero-pen {
   position: absolute;
   left: 0;
-  bottom: .02em;
-  width: .42em;
-  height: .42em;
+  bottom: 0.02em;
+  width: 0.42em;
+  height: 0.42em;
   opacity: 0;
   translate: -14% 0;
 }
-.hero-pen svg { width: 100%; height: 100%; display: block; }
+.hero-pen svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .hero-pen path {
   fill: none;
   stroke: var(--color-accent);
@@ -196,12 +238,24 @@ html.motion .hero-underline {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-html.motion .hero-pen { animation: nib 1.4s linear 2.75s forwards; }
+html.motion .hero-pen {
+  animation: nib 1.4s linear 2.75s forwards;
+}
 @keyframes nib {
-  0%   { left: 0;    opacity: 0; }
-  8%   {             opacity: 1; }
-  88%  {             opacity: 1; }
-  100% { left: 100%; opacity: 0; }
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 /* A plum wash the headline arrives against, which then lifts. */
@@ -215,13 +269,31 @@ html.motion .hero-pen { animation: nib 1.4s linear 2.75s forwards; }
 }
 html.motion .hero-wash {
   opacity: 1;
-  animation: lift 1.1s var(--ease-brand) .95s forwards;
+  animation: lift 1.1s var(--ease-brand) 0.95s forwards;
 }
-@keyframes lift { to { opacity: 0; } }
+@keyframes lift {
+  to {
+    opacity: 0;
+  }
+}
 
-html.motion .hero-lede    { opacity: 0; animation: rise 1.2s var(--ease-brand) 2.85s forwards; }
-html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3.15s forwards; }
-@keyframes rise { from { transform: translateY(26px); } to { opacity: 1; transform: none; } }
+html.motion .hero-lede {
+  opacity: 0;
+  animation: rise 1.2s var(--ease-brand) 2.85s forwards;
+}
+html.motion .hero-actions {
+  opacity: 0;
+  animation: rise 1.2s var(--ease-brand) 3.15s forwards;
+}
+@keyframes rise {
+  from {
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* --- the ribbon ------------------------------------------------------- */
 
@@ -238,36 +310,58 @@ html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3
   pointer-events: none;
   display: none;
 }
-@media (min-width: 1180px) { .ribbon { display: block; } }
+@media (min-width: 1180px) {
+  .ribbon {
+    display: block;
+  }
+}
 .ribbon path {
   fill: none;
   stroke: var(--color-blush);
   stroke-width: 1.4;
   stroke-linecap: round;
   stroke-dasharray: var(--len, 2200);
-  stroke-dashoffset: calc(var(--len, 2200) * (1 - var(--progress, .06)));
+  stroke-dashoffset: calc(var(--len, 2200) * (1 - var(--progress, 0.06)));
 }
 
 /* --- sparkles --------------------------------------------------------- */
 
-.sparkle { position: absolute; fill: var(--color-blush); animation: twinkle 4s ease-in-out infinite; }
+.sparkle {
+  position: absolute;
+  fill: var(--color-blush);
+  animation: twinkle 4s ease-in-out infinite;
+}
 @keyframes twinkle {
-  0%, 100% { opacity: .25; transform: scale(.85); }
-  50%      { opacity: .9;  transform: scale(1.1); }
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
 }
 
 .trail {
   position: fixed;
   pointer-events: none;
   z-index: 998;
-  width: 12px; height: 12px;
+  width: 12px;
+  height: 12px;
   fill: var(--color-blush);
   opacity: 0;
   animation: trail 1100ms var(--ease-brand) forwards;
 }
 @keyframes trail {
-  0%   { opacity: .95; transform: scale(.3) rotate(0deg); }
-  100% { opacity: 0;   transform: scale(1.25) rotate(50deg); }
+  0% {
+    opacity: 0.95;
+    transform: scale(0.3) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25) rotate(50deg);
+  }
 }
 
 /* --- pillar carousel -------------------------------------------------- */
@@ -279,8 +373,20 @@ html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3
   position: relative;
   overflow: hidden;
   padding-block: 10px;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
-          mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 7%,
+    #000 93%,
+    transparent
+  );
 }
 .marquee-track {
   display: flex;
@@ -288,12 +394,27 @@ html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3
   width: max-content;
   animation: drift 46s linear infinite;
 }
-@keyframes drift { to { transform: translateX(calc(-50% - 8px)); } }
+@keyframes drift {
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
+}
 .marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track { animation-play-state: paused; }
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-mask-image: none; mask-image: none; }
-  .marquee-track { animation: none; }
-  .marquee-track > * { scroll-snap-align: center; }
+  .marquee {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-track > * {
+    scroll-snap-align: center;
+  }
 }

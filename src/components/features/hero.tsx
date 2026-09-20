@@ -75,7 +75,6 @@ export function Hero() {
           The future of tech{" "}
           <em className="relative text-accent-strong not-italic">
             is hers
-            <span className="hero-underline" aria-hidden="true" />
             <span className="hero-pen" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M3 21l1.4-4.2L16.1 5.1a2 2 0 0 1 2.8 0l.9.9a2 2 0 0 1 0 2.8L8.1 20.5 3 21z" />
@@ -86,8 +85,9 @@ export function Hero() {
         </h1>
 
         <p className="hero-lede max-w-[52ch] text-[clamp(1.05rem,2.1vw,1.3rem)] text-fg">
-          A society for women in tech who are done waiting to be picked. Workshops,
-          industry rooms, and people who will tell you the truth about the job market.
+          A society for women in tech who are done waiting to be picked.
+          Workshops, industry rooms, and people who will tell you the truth
+          about the job market.
         </p>
 
         <div className="hero-actions flex flex-wrap justify-center gap-3.5">
