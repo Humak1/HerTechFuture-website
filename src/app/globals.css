@@ -13,4 +13,8 @@
 
   --color-blush: #EAC7C7;      /* decorative only */
   --color-blush-soft: #F7E8E7; /* soft panel fill */
+
+  --color-fg: #2E1A22;         /* body copy */
+  --color-fg-muted: #8E4F68;
+  --color-fg-subtle: #A67888;
 }
