@@ -6,4 +6,8 @@
   --color-surface-2: #FFFFFF;  /* hover state */
 
   --color-border: #E6D3CE;     /* hairlines */
+
+  --color-accent: #6F3049;     /* plum — headings, buttons, links */
+  --color-accent-strong: #8E4F68;
+  --color-accent-ink: #FAF5F1; /* text sitting ON plum */
 }
