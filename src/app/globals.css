@@ -247,3 +247,25 @@ html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3
   stroke-dasharray: var(--len, 2200);
   stroke-dashoffset: calc(var(--len, 2200) * (1 - var(--progress, .06)));
 }
+
+/* --- sparkles --------------------------------------------------------- */
+
+.sparkle { position: absolute; fill: var(--color-blush); animation: twinkle 4s ease-in-out infinite; }
+@keyframes twinkle {
+  0%, 100% { opacity: .25; transform: scale(.85); }
+  50%      { opacity: .9;  transform: scale(1.1); }
+}
+
+.trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 998;
+  width: 12px; height: 12px;
+  fill: var(--color-blush);
+  opacity: 0;
+  animation: trail 1100ms var(--ease-brand) forwards;
+}
+@keyframes trail {
+  0%   { opacity: .95; transform: scale(.3) rotate(0deg); }
+  100% { opacity: 0;   transform: scale(1.25) rotate(50deg); }
+}
