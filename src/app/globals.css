@@ -20,4 +20,6 @@
 
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-prata), ui-serif, Georgia, serif;
+
+  --ease-brand: cubic-bezier(.22, .61, .36, 1);
 }
