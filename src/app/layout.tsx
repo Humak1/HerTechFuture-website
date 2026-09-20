@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Jost, Prata } from "next/font/google";
 
+import { Ribbon } from "@/components/layout/ribbon";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -61,6 +62,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-dvh flex-col antialiased">
         <SkipLink />
+        <Ribbon />
         <SiteHeader />
 
         <main id="main" tabIndex={-1} className="flex-1">
