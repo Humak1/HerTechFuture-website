@@ -222,3 +222,28 @@ html.motion .hero-wash {
 html.motion .hero-lede    { opacity: 0; animation: rise 1.2s var(--ease-brand) 2.85s forwards; }
 html.motion .hero-actions { opacity: 0; animation: rise 1.2s var(--ease-brand) 3.15s forwards; }
 @keyframes rise { from { transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+/* --- the ribbon ------------------------------------------------------- */
+
+/* One continuous stroke down the left margin, drawn from the bow in the
+   brand banner, inking itself in as you scroll. Doubles as a reading
+   position indicator. Desktop only — it needs margin to live in. */
+.ribbon {
+  position: fixed;
+  top: 0;
+  left: 26px;
+  width: 60px;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
+  display: none;
+}
+@media (min-width: 1180px) { .ribbon { display: block; } }
+.ribbon path {
+  fill: none;
+  stroke: var(--color-blush);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: var(--len, 2200);
+  stroke-dashoffset: calc(var(--len, 2200) * (1 - var(--progress, .06)));
+}
