@@ -74,4 +74,15 @@
     outline-offset: 4px;
     border-radius: 2px;
   }
+
+  /* Anyone who has asked their operating system to reduce motion gets the
+     page still and complete. A WCAG 2.2 requirement, not a courtesy. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
 }
