@@ -126,3 +126,18 @@ html.motion [data-reveal] {
   transition-delay: var(--d, 0ms);
 }
 html.motion [data-reveal].in { opacity: 1; transform: none; }
+
+/* --- hero choreography ------------------------------------------------ */
+
+/* The emblem inks in from the baseline upward, the way the mark would be
+   drawn, rather than simply fading. */
+html.motion .mark {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  animation: ink 2.1s var(--ease-brand) 1.1s forwards;
+}
+@keyframes ink {
+  0%   { opacity: 0; clip-path: inset(0 0 100% 0); }
+  18%  { opacity: 1; }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); }
+}
