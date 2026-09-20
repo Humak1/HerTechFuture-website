@@ -66,4 +66,12 @@
 
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
+
+  /* Never delete a focus outline without replacing it. This is how a
+     keyboard user knows where they are on the page. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
 }
