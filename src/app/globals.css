@@ -110,3 +110,11 @@
     100% { background-position: 0 0; }
   }
 }
+
+.eyebrow {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+}
