@@ -17,4 +17,7 @@
   --color-fg: #2E1A22;         /* body copy */
   --color-fg-muted: #8E4F68;
   --color-fg-subtle: #A67888;
+
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-prata), ui-serif, Georgia, serif;
 }
