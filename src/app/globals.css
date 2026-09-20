@@ -55,4 +55,12 @@
     font-weight: 300;
     -webkit-text-size-adjust: 100%;
   }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--color-accent);
+    line-height: 1.08;
+    letter-spacing: -.01em;
+  }
 }
