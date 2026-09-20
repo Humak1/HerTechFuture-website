@@ -18,7 +18,10 @@ import { useEffect } from "react";
  */
 export function MotionRuntime() {
   useEffect(() => {
-    // Behaviour is added here one capability at a time.
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    document.documentElement.classList.add("motion");
   }, []);
 
   return null;
