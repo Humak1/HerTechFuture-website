@@ -59,20 +59,20 @@ export function Button({
     // our window, and stops us leaking the referring URL.
     if (external) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={classes} data-magnetic>
           {children}
         </a>
       );
     }
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} data-magnetic>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type="button" onClick={onClick} className={classes}>
+    <button type="button" onClick={onClick} className={classes} data-magnetic>
       {children}
     </button>
   );
