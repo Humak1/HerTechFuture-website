@@ -10,4 +10,7 @@
   --color-accent: #6F3049;     /* plum — headings, buttons, links */
   --color-accent-strong: #8E4F68;
   --color-accent-ink: #FAF5F1; /* text sitting ON plum */
+
+  --color-blush: #EAC7C7;      /* decorative only */
+  --color-blush-soft: #F7E8E7; /* soft panel fill */
 }
