@@ -86,6 +86,38 @@ export function MotionRuntime() {
     } else {
       revealed.forEach((el) => el.classList.add("in"));
     }
+
+    /* ---- split the headline into words -------------------------------
+       Walking text nodes rather than rewriting innerHTML keeps the markup
+       and the accessible name intact: a screen reader still hears one
+       sentence, not a list of fragments. */
+    const title = document.querySelector(".hero-title");
+    if (title) {
+      let index = 0;
+      const walker = document.createTreeWalker(title, NodeFilter.SHOW_TEXT);
+      const textNodes: Node[] = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+      for (const node of textNodes) {
+        const value = node.nodeValue ?? "";
+        if (!value.trim()) continue;
+
+        const frag = document.createDocumentFragment();
+        for (const part of value.split(/(\s+)/)) {
+          if (!part) continue;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+            continue;
+          }
+          const span = document.createElement("span");
+          span.className = "wd";
+          span.style.setProperty("--i", String(index++));
+          span.textContent = part;
+          frag.appendChild(span);
+        }
+        node.parentNode?.replaceChild(frag, node);
+      }
+    }
   }, []);
 
   return null;
