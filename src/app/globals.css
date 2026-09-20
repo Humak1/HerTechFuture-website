@@ -63,4 +63,7 @@
     line-height: 1.08;
     letter-spacing: -.01em;
   }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 }
