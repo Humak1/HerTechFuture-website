@@ -161,6 +161,22 @@ export function MotionRuntime() {
 
     const fine = window.matchMedia("(pointer: fine)").matches;
     if (fine) document.addEventListener("pointermove", onTrail, { passive: true });
+
+    /* ---- teardown ----------------------------------------------------
+       React runs effects twice in development Strict Mode, so without this
+       every listener would be attached twice and the trail would double. */
+    return () => {
+      if (onScroll) {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+      }
+      io?.disconnect();
+      buttons.forEach((btn) => {
+        btn.removeEventListener("pointermove", onMove);
+        btn.removeEventListener("pointerleave", onLeave);
+      });
+      if (fine) document.removeEventListener("pointermove", onTrail);
+    };
   }, []);
 
   return null;
