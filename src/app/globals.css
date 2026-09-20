@@ -1,0 +1,105 @@
+/*
+ * Tailwind CSS v4 is configured in CSS, not in a JavaScript config file.
+ * `@import "tailwindcss"` pulls in the framework; `@theme` below defines our
+ * design tokens, and Tailwind generates utility classes from them
+ * (e.g. `--color-accent` becomes `bg-accent`, `text-accent`, `border-accent`).
+ */
+@import "tailwindcss";
+
+/*
+ * DESIGN TOKENS
+ * -------------
+ * Every colour, font and spacing value the site uses is named here once.
+ * Nothing anywhere else in the codebase writes a raw hex code. That is what
+ * makes a rebrand a five-line change instead of a find-and-replace across
+ * forty files.
+ *
+ * The palette is taken from the HerTech Future Instagram identity:
+ * near-black background, pink accent, off-white text.
+ */
+@theme {
+  /* Brand */
+  --color-ink: #0a0a0b; /* page background - near-black, softer than #000 */
+  --color-surface: #141417; /* raised panels: cards, header */
+  --color-surface-2: #1d1d21; /* hover state for surfaces */
+  --color-border: #2a2a30; /* hairlines and card outlines */
+
+  --color-accent: #f7a8c4; /* HTF pink - decorative and large text only */
+  --color-accent-strong: #ffc2d8; /* lighter pink, used on accent text at small sizes */
+  --color-accent-ink: #1a0a11; /* text colour when sitting ON the pink */
+
+  --color-fg: #f4f4f5; /* primary body text */
+  --color-fg-muted: #b4b4bd; /* secondary text - still 7:1 on --color-ink */
+  --color-fg-subtle: #8b8b95; /* tertiary text - meets 4.5:1, use sparingly */
+
+  /* Typography. `next/font` assigns the actual font files to these variables
+     in layout.tsx, so the font is self-hosted rather than fetched from Google
+     at runtime -- faster, and no visitor IP addresses leak to a third party. */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  /* One shared page width, so every section lines up down the page. */
+  --spacing-gutter: 1.25rem;
+}
+
+/*
+ * BASE LAYER
+ * ----------
+ * Sitewide defaults. Kept deliberately small -- everything else is a utility
+ * class on the component that needs it.
+ */
+@layer base {
+  html {
+    /* Smooth scrolling for in-page anchor links, but not for people who have
+       asked their operating system to reduce motion. Respecting this setting
+       is a WCAG 2.2 requirement, not a nicety. */
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    /* Stops mobile Safari inflating font sizes on rotation. */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /*
+   * Focus ring. The browser default is often invisible against a dark
+   * background, and the single worst accessibility mistake is to delete the
+   * outline without replacing it -- that leaves keyboard users with no way to
+   * tell where they are on the page. `:focus-visible` shows the ring for
+   * keyboard navigation but not for mouse clicks.
+   */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Headings use the display face and tighter tracking. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance; /* stops a lone word dangling on its own line */
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
