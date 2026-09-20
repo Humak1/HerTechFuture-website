@@ -141,3 +141,22 @@ html.motion .mark {
   18%  { opacity: 1; }
   100% { opacity: 1; clip-path: inset(0 0 0 0); }
 }
+
+/* Words are wrapped by the runtime, so the headline is a plain readable
+   string when JS does not run. Each one punches on oversized, overshoots,
+   and settles. The overshoot is written as explicit keyframes rather than
+   a spring easing curve: spring curves front-load nearly all the movement
+   into the first 150ms, so lengthening the duration does nothing you can
+   actually see. */
+html.motion .hero-title .wd {
+  display: inline-block;
+  opacity: 0;
+  animation: punch 1.6s var(--ease-brand) forwards;
+  animation-delay: calc(var(--i) * 215ms + 180ms);
+}
+@keyframes punch {
+  0%   { opacity: 0; transform: scale(.55) translateY(.16em); }
+  45%  { opacity: 1; transform: scale(1.07) translateY(-.02em); }
+  72%  { transform: scale(.985); }
+  100% { opacity: 1; transform: none; }
+}
