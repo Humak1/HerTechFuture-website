@@ -65,7 +65,14 @@ export default function RootLayout({
   return (
     // `lang="en-GB"` is not decoration: it tells a screen reader which
     // pronunciation rules to use. Getting it wrong makes a page unlistenable.
-    <html lang="en-GB" className={`${inter.variable} ${fraunces.variable}`}>
+    <html
+      lang="en-GB"
+      // Tells Next.js the smooth scrolling in globals.css is deliberate, so it
+      // can suppress it during route changes -- otherwise clicking a nav link
+      // animates the scroll position on the way to the new page.
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${fraunces.variable}`}
+    >
       <body className="flex min-h-dvh flex-col antialiased">
         <SkipLink />
         <SiteHeader />

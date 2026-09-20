@@ -25,7 +25,9 @@ const contentSecurityPolicy = [
   // reaches the page. The stricter alternative is a nonce-based CSP generated in
   // `middleware.ts`, but that forces every page to render dynamically, which
   // gives up static generation. Revisit this the moment the site accepts input.
-  "script-src 'self' 'unsafe-inline'",
+  process.env.NODE_ENV === "production"
+    ? "script-src 'self' 'unsafe-inline'"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
 
   // Styles. Next.js and Tailwind inject a small amount of inline CSS.
   // Inline styles are far less dangerous than inline scripts.
@@ -53,8 +55,15 @@ const contentSecurityPolicy = [
   "frame-ancestors 'none'",
 
   // Silently upgrade any stray http:// sub-resource to https://.
-  "upgrade-insecure-requests",
-].join("; ");
+  //
+  // Production only. The dev server runs on plain http://localhost, and some
+  // browsers -- Safari in particular -- apply this to localhost too, so the
+  // stylesheet gets requested over https, fails, and the page renders with no
+  // CSS at all. Production is always https, so the protection is unaffected.
+  process.env.NODE_ENV === "production" ? "upgrade-insecure-requests" : "",
+]
+  .filter(Boolean)
+  .join("; ");
 
 /**
  * Security response headers, applied to every route.
