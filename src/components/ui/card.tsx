@@ -3,25 +3,28 @@ import { cn } from "@/lib/cn";
 
 type CardProps = {
   children: ReactNode;
-  /** Adds a hover treatment. Only use on cards that are themselves a link. */
+  /** Soft blush fill instead of the default near-white. */
+  tinted?: boolean;
   interactive?: boolean;
   className?: string;
 };
 
 /**
- * The standard raised panel: event cards, committee cards, pillar cards.
+ * The standard panel.
  *
- * Deliberately has no opinion about its contents -- it handles the border,
- * the radius, the background and the hover state, and nothing else. A
- * component that tried to also lay out a title, a date and a button would only
- * fit the first thing it was written for.
+ * Hairline borders rather than shadows, deliberately: borders make a group
+ * of cards read as one ruled sheet, where shadows make them read as several
+ * objects floating at different heights. For a page of equal-weight
+ * content, the first is what you want.
  */
-export function Card({ children, interactive = false, className }: CardProps) {
+export function Card({ children, tinted = false, interactive = false, className }: CardProps) {
   return (
     <div
       className={cn(
-        "relative rounded-2xl border border-border bg-surface p-6",
-        interactive && "transition-colors duration-200 hover:border-accent/60 hover:bg-surface-2",
+        "relative overflow-hidden rounded-[22px] border p-7 sm:p-8",
+        tinted ? "border-[#EFD8D6] bg-blush-soft" : "border-border bg-surface",
+        interactive &&
+          "transition-[border-color,transform,background] duration-[400ms] hover:-translate-y-1 hover:border-blush hover:bg-surface-2",
         className,
       )}
     >

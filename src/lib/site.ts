@@ -24,14 +24,14 @@ export const siteConfig = {
    * (hence the NEXT_PUBLIC_ prefix, which is what allows it into the browser
    * bundle) -- never put a secret behind that prefix.
    */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hertechfuture.co.uk",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hertechfuture.com",
 
   /** Where the society actually lives on the internet. */
   links: {
     instagram: "https://www.instagram.com/mmu_htf/",
     whatsapp: "https://chat.whatsapp.com/KZv4Kga9QIp2N1IrJ3mnnM",
     union: "https://www.theunionmmu.org/groups/hertech-future",
-    email: "hello@hertechfuture.co.uk",
+    email: "hertechfuturemmu@gmail.com",
   },
 
   /** The university we are a society of. Stated as fact, not as endorsement. */
