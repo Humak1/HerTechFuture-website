@@ -135,6 +135,32 @@ export function MotionRuntime() {
       btn.addEventListener("pointermove", onMove);
       btn.addEventListener("pointerleave", onLeave);
     });
+
+    /* ---- sparkle trail ----------------------------------------------
+       Pointer devices only. It adds nothing on touch, where there is no
+       cursor to trail. Throttled, or it snows. */
+    const STAR = "M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z";
+    let last = 0;
+    const onTrail = (event: PointerEvent) => {
+      const now = performance.now();
+      if (now - last < 70) return;
+      last = now;
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("class", "trail");
+      svg.style.left = `${event.clientX - 6 + (Math.random() * 14 - 7)}px`;
+      svg.style.top = `${event.clientY - 6 + (Math.random() * 14 - 7)}px`;
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", STAR);
+      svg.appendChild(path);
+      document.body.appendChild(svg);
+      window.setTimeout(() => svg.remove(), 1100);
+    };
+
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    if (fine) document.addEventListener("pointermove", onTrail, { passive: true });
   }, []);
 
   return null;
