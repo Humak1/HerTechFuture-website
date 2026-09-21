@@ -18,8 +18,8 @@ export function SiteFooter() {
         <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
           <div className="max-w-sm">
             <p className="font-display text-lg">
-              <span className="text-accent">{siteConfig.shortName}</span> &mdash;{" "}
-              {siteConfig.tagline}
+              <span className="text-accent">{siteConfig.shortName}</span>{" "}
+              &mdash; {siteConfig.tagline}
             </p>
 
             {/*
@@ -29,8 +29,9 @@ export function SiteFooter() {
               page, keeps the relationship unambiguous and costs one sentence.
             */}
             <p className="mt-4 text-sm leading-relaxed text-fg-subtle">
-              {siteConfig.name} is a student society at {siteConfig.university.name}.
-              Official membership is handled by the{" "}
+              {siteConfig.name} is a student society at{" "}
+              {siteConfig.university.name}. Official membership is handled by
+              the{" "}
               <a
                 href={siteConfig.links.union}
                 target="_blank"
@@ -71,7 +72,16 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-10 text-xs text-fg-subtle">
-          &copy; {year} {siteConfig.name}.
+          &copy; {year} {siteConfig.name}. Built by{" "}
+          <a
+            href="https://www.linkedin.com/in/huma-k-878392216/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 transition-colors hover:text-accent"
+          >
+            Huma Kiyani
+          </a>
+          .
         </p>
       </Container>
     </footer>
