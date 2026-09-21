@@ -101,7 +101,7 @@ push is what updates them.
 - No secrets in the repository. `.env*` is gitignored. If a secret is ever
   committed, rotate it — removing the commit is not enough.
 - Dependabot and `npm audit --audit-level=high` in CI cover dependencies.
-- Verify the deployed headers at [securityheaders.com](https://securityheaders.com).
+- Verifed the deployed headers at [securityheaders.com](https://securityheaders.com).
 
 ## Accessibility
 
