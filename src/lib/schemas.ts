@@ -44,7 +44,10 @@ const time24 = z
 const slug = z
   .string()
   .min(1)
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Lowercase letters, numbers and single hyphens only");
+  .regex(
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    "Lowercase letters, numbers and single hyphens only",
+  );
 
 export const eventSchema = z.object({
   slug,
@@ -71,8 +74,18 @@ export const eventSchema = z.object({
 export const committeeMemberSchema = z.object({
   name: z.string().min(1),
   role: z.string().min(1),
-  /** Optional one-liner. Keep it short and keep it consented-to. */
-  blurb: z.string().max(200).optional(),
+  /** Course title, as they'd write it themselves. */
+  studying: z.string().min(1).optional(),
+  /** The fun fact from the Instagram cards — the bit people actually read. */
+  funFact: z.string().max(200).optional(),
+  photo: z
+    .string()
+    .regex(
+      /^\/committee\/[a-z0-9-]+\.(jpg|jpeg|png|webp)$/i,
+      "Use a path like /committee/huma.png",
+    )
+    .optional(),
+  linkedin: z.url().optional(),
 });
 
 export const pillarSchema = z.object({

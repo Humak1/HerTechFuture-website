@@ -19,9 +19,29 @@ const rawCommittee: unknown[] = [
   {
     name: "Huma",
     role: "Founder & Chair",
-    blurb: "BSc Artificial Intelligence and Data Science. Started HTF to build the society she needed in first year.",
+    studying: "BSc(Hons) Artificial Intelligence and Data Science",
+    funFact: "I use my voice to advocate for young people across the UK",
+    photo: "/committee/huma.png",
+    linkedin: "https://www.linkedin.com/in/huma-k-878392216/",
   },
-  // Add the rest of the committee here, in the same shape.
+  // Add the rest of the committee here, in the same shape if needed.
+  {
+    name: "Faith Fawusi",
+    role: "Founder & Treasurer",
+    studying: "BS Software Engineering",
+    funFact: "I really like farming sim games and pixel art",
+    photo: "/committee/faith.png",
+    linkedin: "https://www.linkedin.com/in/faith-f-7b553b287/",
+  },
+  {
+    name: "Alishbah Atiq",
+    role: "Secretary",
+    studying: "BSc(Hons) Mathematics",
+    funFact:
+      "I like to make art in multiple mediums such as painting, knitting, digital art and pottery",
+    photo: "/committee/alishbah.png",
+    linkedin: "https://www.linkedin.com/in/alishbah-atiq-a14635388/",
+  },
 ];
 
 export const committee: CommitteeMember[] = parseCollection(
